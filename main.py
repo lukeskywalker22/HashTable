@@ -1,4 +1,5 @@
 from hashtable import HashTable
+import csv
 
 if __name__ == "__main__":
     ht = HashTable(30)
@@ -11,6 +12,15 @@ if __name__ == "__main__":
     2. You can use the id as the hash table key for 
     each of the above records.
     """
+
+    with open('student_data.csv','r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            ht.setitem(row["id"],row)
+        # f.close() is called automatically
+
+    # print(ht.__repr__())
+    print(ht.getitem("s0039e"))
     
     # Test your hashtable using appropriate methods
     # from your implementation
